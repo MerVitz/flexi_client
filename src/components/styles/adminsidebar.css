@@ -1,0 +1,20 @@
+/* src/components/styles/adminsidebar.css */
+.admin-sidebar {
+  width: 200px;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+.admin-sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.admin-sidebar li {
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.admin-sidebar li:hover {
+  text-decoration: underline;
+}
