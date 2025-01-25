@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './styles/managebookings.css';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const ManageBookings = () => {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -23,7 +25,7 @@ const ManageBookings = () => {
   const fetchBookings = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:8000/api/bookings/', {
+      const response = await axios.get('${API_URL}/api/bookings/', {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -41,7 +43,7 @@ const ManageBookings = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.put(
-        `http://localhost:8000/api/bookings/${bookingId}/confirm/`,
+        `${API_URL}/api/bookings/${bookingId}/confirm/`,
         {},
         {
           headers: {

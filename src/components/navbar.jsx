@@ -5,6 +5,8 @@ import './styles/navbar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userType, setUserType] = useState(null);
@@ -42,7 +44,7 @@ function Navbar() {
 
   const fetchNotifications = async (token) => {
     try {
-      const response = await axios.get('http://localhost:8000/api/notifications/', {
+      const response = await axios.get('${API_URL}/api/notifications/', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },

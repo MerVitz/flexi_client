@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './styles/inbox.css';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Inbox = () => {
     const [messages, setMessages] = useState([]);
     const userId = localStorage.getItem('user_id'); // Fetch the user ID from local storage
@@ -11,7 +13,7 @@ const Inbox = () => {
     useEffect(() => {
         const fetchBookings = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/bookings/', {
+                const response = await axios.get('${API_URL}/api/bookings/', {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
                     }

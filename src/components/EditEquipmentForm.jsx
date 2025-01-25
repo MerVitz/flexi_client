@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import './styles/editequipmentform.css';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const EditEquipmentForm = ({ equipment, onClose, onUpdate }) => {
   const [formData, setFormData] = useState({
     id: equipment.id,
@@ -44,7 +46,7 @@ const EditEquipmentForm = ({ equipment, onClose, onUpdate }) => {
     }
 
     try {
-        const response = await axios.put(`http://localhost:8000/api/equipment/${equipment.id}/`, data, {
+        const response = await axios.put(`${API_URL}/api/equipment/${equipment.id}/`, data, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }

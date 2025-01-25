@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import './styles/bookingform.css';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const BookingForm = ({ equipmentId, onClose }) => {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
@@ -33,7 +35,7 @@ const BookingForm = ({ equipmentId, onClose }) => {
             return;
         }
         try {
-            const response = await axios.post('http://localhost:8000/api/bookings/', {
+            const response = await axios.post('${API_URL}/api/bookings/', {
                 user: userId, // Include user ID in the request
                 equipment: equipmentId,
                 start_time: `${startDate}T${startTime}`,

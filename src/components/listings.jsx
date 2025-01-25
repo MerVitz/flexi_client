@@ -4,12 +4,14 @@ import React, { useEffect, useState } from 'react';
 import BookingForm from './BookingForm';
 import './styles/listings.css';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function Listings() {
   const [equipments, setEquipments] = useState([]);
   const [selectedEquipment, setSelectedEquipment] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/equipment/')
+    axios.get('${API_URL}/api/equipment/')
       .then(response => {
         setEquipments(response.data);
       })

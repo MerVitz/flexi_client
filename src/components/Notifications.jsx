@@ -5,6 +5,8 @@ import axios from 'axios';
 import './styles/notifications.css';
 import Navbar from './navbar';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Notification = () => {
   const [notifications, setNotifications] = useState([]);
   const [cart, setCart] = useState([]);
@@ -28,7 +30,7 @@ const Notification = () => {
   const fetchNotifications = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:8000/api/notifications/', {
+      const response = await axios.get('${API_URL}/api/notifications/', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setNotifications(response.data); // Update notifications state
@@ -43,7 +45,7 @@ const Notification = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.put(
-        `http://localhost:8000/api/notifications/${notificationId}/confirm/`,
+        `${API_URL}/api/notifications/${notificationId}/confirm/`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );

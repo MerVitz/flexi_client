@@ -4,6 +4,9 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import './styles/addequipment.css';
 
+// Get the backend API URL from the environment variables
+const API_URL = import.meta.env.VITE_API_URL;
+
 function AddEquipment() {
   const [name, setName] = useState('');
   const [type, setType] = useState('');
@@ -23,7 +26,7 @@ function AddEquipment() {
     formData.append('image', image);
 
     try {
-      await axios.post('http://localhost:8000/api/equipment/', formData, {
+      await axios.post('${API_URL}/api/equipment/', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

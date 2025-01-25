@@ -6,6 +6,9 @@ import PropTypes from 'prop-types';
 import './styles/adminsidebar.css';
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+
 const AdminSidebar = ({ onSelect }) => {
     const [hasAdminPrivileges, setHasAdminPrivileges] = useState(false);
 
@@ -14,7 +17,7 @@ const AdminSidebar = ({ onSelect }) => {
         const checkAdminPrivileges = async () => {
             try {
                 // When the endpoint is referenced with, 'http://localhost:8000/' it does not work, 
-                const response = await axios.get('http://127.0.0.1:8000/api/check-admin-privileges', {
+                const response = await axios.get('${API_URL}/api/check-admin-privileges', {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`,
                     },

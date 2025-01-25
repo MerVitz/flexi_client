@@ -5,13 +5,15 @@ import 'boxicons';
 import EditEquipmentForm from './EditEquipmentForm';
 import './styles/viewEquipment.css';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function Listings() {
   const [equipments, setEquipments] = useState([]);
   const [isEditFormOpen, setIsEditFormOpen] = useState(false);
   const [currentEquipment, setCurrentEquipment] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/equipment/')
+    axios.get('${API_URL}/api/equipment/')
       .then(response => {
         setEquipments(response.data);
       })

@@ -5,6 +5,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles/signin.css';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function SignIn() {
   const [email, setEmail] = useState('');``
   const [password, setPassword] = useState('');
@@ -16,7 +18,7 @@ function SignIn() {
     event.preventDefault();
     try {
       // Accessing th login endpoint
-      const response = await axios.post('http://localhost:8000/api/login/', { email, password });
+      const response = await axios.post('${API_URL}/api/login/', { email, password });
 
       //Storing the users detials , used for a given session
       localStorage.setItem('token', response.data.token);

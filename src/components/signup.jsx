@@ -2,6 +2,9 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import './styles/signup.css';
+
+const API_URL = import.meta.env.VITE_API_URL;
+
 // To understand how it translate to this palce
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -18,7 +21,7 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8000/api/register/', {
+      const response = await axios.post('${API_URL}/api/register/', {
         email: formData.email,
         password: formData.password,
         first_name: formData.firstName,
